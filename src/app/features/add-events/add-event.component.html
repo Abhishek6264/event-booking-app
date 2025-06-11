@@ -1,0 +1,57 @@
+<div class="add-event-container">
+    <h2>{{ isEditMode ? 'Edit Event' : 'Add New Event' }}</h2>
+    <form (ngSubmit)="submitForm()" #eventForm="ngForm" class="event-form">
+      <label>Title</label>
+      <input
+        type="text"
+        [(ngModel)]="event.title"
+        name="title"
+        required
+        #title="ngModel"
+        [class.invalid]="title.invalid && title.touched"
+      />
+  
+      <label>Description</label>
+      <textarea
+        [(ngModel)]="event.description"
+        name="description"
+        required
+        #desc="ngModel"
+        [class.invalid]="desc.invalid && desc.touched"
+      ></textarea>
+  
+      <label>Location</label>
+      <input
+        type="text"
+        [(ngModel)]="event.location"
+        name="location"
+        required
+        #loc="ngModel"
+        [class.invalid]="loc.invalid && loc.touched"
+      />
+  
+      <label>Date</label>
+      <input
+        type="date"
+        [(ngModel)]="event.date"
+        name="date"
+        required
+        #date="ngModel"
+        [class.invalid]="date.invalid && date.touched"
+      />
+  
+      <label>Seats Available</label>
+      <input
+        type="number"
+        [(ngModel)]="event.seatsAvailable"
+        name="seatsAvailable"
+        required
+        min="1"
+        #seats="ngModel"
+        [class.invalid]="seats.invalid && seats.touched"
+      />
+  
+      <button type="submit" [disabled]="eventForm.invalid">Add Event</button>
+    </form>
+  </div>
+  

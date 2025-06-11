@@ -1,0 +1,47 @@
+.event-details-box {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+  }
+  
+  .event-title {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .event-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+  
+  .event-info {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    color: #444;
+  }
+  
+  .book-button {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .book-button:hover {
+    background-color: #004c99;
+  }
+  
+  .book-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  

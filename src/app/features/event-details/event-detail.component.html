@@ -1,0 +1,20 @@
+@if(event){
+    <div class="event-details-box">
+        <h2 class="event-title">{{ event.title }}</h2>
+        <p class="event-description">{{ event.description }}</p>
+      
+        <p class="event-info"><strong>📍 Location:</strong> {{ event.location | capitalize }}</p>
+        <p class="event-info"><strong>📅 Date:</strong> {{ event.date | date: 'longDate' }}</p>
+        <p class="event-info"><strong>🎟️ Seats Left:</strong> {{ event.seatsAvailable }}</p>
+      
+        <button
+          class="book-button"
+          (click)="bookSeat()"
+          [disabled]="event.seatsAvailable === 0"
+        >
+        Confirm Booking
+        </button>
+      </div>
+}
+
+  

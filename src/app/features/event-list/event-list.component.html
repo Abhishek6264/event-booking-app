@@ -1,0 +1,45 @@
+<div class="home-container">
+    <div class="header-row">
+      <h1>Upcoming Events</h1>
+      <button class="add-btn" [routerLink]="['/add-event']">+ Add Event</button>
+    </div>
+
+    <div class="filters">
+      <input
+        type="text"
+        placeholder="Filter by location"
+        [(ngModel)]="selectedLocation"
+        (input)="filterEvents()"
+      />
+      <input
+        type="date"
+        [(ngModel)]="selectedDate"
+        (change)="filterEvents()"
+      />
+      <button (click)="resetFilters()">Reset</button>
+    </div>
+    @if(filteredEvents.length === 0){
+      <p class="no-events">No Events Found</p>
+    }
+    @for (event of filteredEvents; track $index; let i = $index ){
+      <div class="event-card"  [appHighlightToday]="event.date" [routerLink]="['/event', event.id]">
+        <h3>{{ event.title | capitalize}}</h3>
+        <p>{{ event.description  | capitalize }}</p>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+        <p><strong>Date:</strong> {{ event.date | date }}</p>
+        <p><strong>Seats Available:</strong> {{ event.seatsAvailable }}</p>
+
+        <div class="button-row">
+          <button
+          [disabled]="event.seatsAvailable === 0"
+          [routerLink]="['/event', event.id]">
+          Book Now</button>
+          <button [routerLink]="['/edit-event', event.id]">
+            <i class="material-icons">edit_note</i>
+          </button>
+          <button (click)="deleteEvent(event.id)"> <i class="material-icons">delete</i></button>
+        </div>
+      </div>
+   }
+
+</div>
