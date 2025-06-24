@@ -19,6 +19,7 @@ export class AddEventComponent implements OnInit {
 
   isEditMode = false;
   editId: string = '';
+  today:any
 
   event: Partial<Event> = {
     title: '',
@@ -37,10 +38,10 @@ export class AddEventComponent implements OnInit {
         this.event = {
           ...fetchedEvent,
         };
-
       }
-     
     }
+    const todayDate = new Date();
+    this.today = new Date(todayDate.getTime() + (5.5 * 60 * 60 * 1000)).toISOString().split('T')[0];
   }
   submitForm() {
     if (

@@ -37,6 +37,7 @@
         name="date"
         required
         #date="ngModel"
+        min="{{ today }}"
         [class.invalid]="date.invalid && date.touched"
       />
   

@@ -24,8 +24,12 @@
     margin-bottom: 0.8rem;
     color: #444;
   }
-  
-  .book-button {
+  .booking-actions{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  .book-button, .cancel-button {
     background-color: #0066cc;
     color: white;
     border: none;
@@ -36,11 +40,11 @@
     transition: background-color 0.3s ease;
   }
   
-  .book-button:hover {
+  .book-button:hover, .cancel-button:hover {
     background-color: #004c99;
   }
   
-  .book-button:disabled {
+  .book-button:disabled , .cancel-button:disabled {
     background-color: #aaa;
     cursor: not-allowed;
   }

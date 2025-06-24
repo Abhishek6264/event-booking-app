@@ -1,10 +1,10 @@
-
 import { Injectable } from '@angular/core';
 import { Event } from '../models/event.model';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class EventService {
+  private bookedEvents: number[] = []; 
     private _events: Event[] = [
     {
       id: 1,
@@ -29,6 +29,7 @@ export class EventService {
   }
   private eventsSubject = new BehaviorSubject<Event[]>(this._events);
   events$ = this.eventsSubject.asObservable();
+
   getEventById(id: number): Event | undefined {
     return this._events.find(e => e.id === id);
   }
@@ -37,15 +38,32 @@ export class EventService {
     this._events.push(newEvent);
     this.eventsSubject.next(this._events);
   }
-  updateEvent(updated: Event) {
+  isEventBooked(eventId: number): boolean {
+    return this.bookedEvents.includes(eventId);
+  }
+  bookEvent(eventId: number): void {
+    if (!this.bookedEvents.includes(eventId)) {
+      this.bookedEvents.push(eventId);
+    }
+  }
+  cancelEventBooking(eventId: number): void {
+    const index = this.bookedEvents.indexOf(eventId);
+    if (index !== -1) {
+      this.bookedEvents.splice(index, 1);
+    }
+  }
+  updateEvent(updated: Event): Observable<void> {
     const index = this._events.findIndex(e => e.id === updated.id);
     if (index !== -1) {
       this._events[index] = updated;
-     return this.eventsSubject.next(this._events);
+      this.eventsSubject.next(this._events);
+      return of(void 0);
     }
+    return of(void 0);
   }
-  deleteEvent(id: number) {
+  deleteEvent(id: number): Observable<void> {
     this._events = this._events.filter(e => e.id !== id);
-    return this.eventsSubject.next(this._events);
+    this.eventsSubject.next(this._events);
+    return of(void 0);
   }
 }

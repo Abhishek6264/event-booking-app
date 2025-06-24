@@ -27,6 +27,7 @@ export class EventListComponent {
 
   selectedLocation: string = '';
   selectedDate: string = '';
+  isBooked: boolean = false;
 
   ngOnInit() {
     this.eventService.getEvents().subscribe((data) => {

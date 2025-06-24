@@ -25,9 +25,9 @@
       <div class="event-card"  [appHighlightToday]="event.date" [routerLink]="['/event', event.id]">
         <h3>{{ event.title | capitalize}}</h3>
         <p>{{ event.description  | capitalize }}</p>
-        <p><strong>Location:</strong> {{ event.location }}</p>
-        <p><strong>Date:</strong> {{ event.date | date }}</p>
-        <p><strong>Seats Available:</strong> {{ event.seatsAvailable }}</p>
+        <p><strong>📍 Location:</strong> {{ event.location }}</p>
+        <p><strong>📅 Date:</strong>  {{ event.date | date }}</p>
+        <p><strong>🎟️ Seats Left:</strong> {{ event.seatsAvailable }}</p>
 
         <div class="button-row">
           <button
